@@ -1,11 +1,12 @@
-import Elemento from "../Elemento";
+import Citas from "../Citas/Index"
 
-const Listado = ({nombres}) => {
-    return (
-        <ul>
-            { nombres.map(n=> <Elemento nombre={n} />) }
-        </ul>
-    );
+function Listado() {
+  return (
+    <div className="one-half column">
+      <h2>Administra tus citas</h2>
+      <Citas />
+    </div>
+  )
 }
 
-export default Listado;
+export default Listado
