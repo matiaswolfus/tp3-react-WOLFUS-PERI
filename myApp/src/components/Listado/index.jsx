@@ -1,10 +1,10 @@
 import Citas from "../Citas/Index"
 
-function Listado() {
+function Listado({ citas, eliminarCita }) {
   return (
     <div className="one-half column">
       <h2>Administra tus citas</h2>
-      <Citas />
+      <Citas citas={citas} eliminarCita={eliminarCita} />
     </div>
   )
 }
