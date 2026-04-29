@@ -1,8 +1,21 @@
+import { useState } from 'react'
 import './Citas.css'
+import Modal from '../modal'
 
 function Citas({ citas, eliminarCita }) {
+  const [citaAEliminar, setCitaAEliminar] = useState(null)
+
   return (
     <section>
+      {citaAEliminar && (
+        <Modal
+          onConfirmar={() => {
+            eliminarCita(citaAEliminar)
+            setCitaAEliminar(null)
+          }}
+          onCancelar={() => setCitaAEliminar(null)}
+        />
+      )}
       {citas.map((cita) => (
         <div key={cita.id} className="cita">
           <p>Mascota: <span>{cita.mascota}</span></p>
@@ -12,7 +25,7 @@ function Citas({ citas, eliminarCita }) {
           <p>Sintomas: <span>{cita.sintomas}</span></p>
           <button
             className="button eliminar u-full-width"
-            onClick={() => eliminarCita(cita.id)}
+            onClick={() => setCitaAEliminar(cita.id)}
           >
             Eliminar ×
           </button>
